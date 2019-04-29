@@ -1,0 +1,5 @@
+{
+    "prettier.printWidth": 150,
+    "prettier.semi": true,
+    "prettier.singleQuote": true
+}
