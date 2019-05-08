@@ -1,10 +1,11 @@
-const actions = ['MOVE', 'ROTATE', 'INV_ROTATE'];
+const actions = ['MOVE', 'WAIT', 'ROTATE', 'INV_ROTATE'];
 class Fish extends Unit {
     constructor(x, y, graphics) {
         super(x, y, graphics);
         this.biteRange = 15;
-        this.length = FISH_LENGTH;
-        this.width = FISH_LENGTH;
+        this.radius = FISH_RADIUS;
+        this.rotationValue = 15;
+        this.velocityValue = 5;
     }
 
     think() {
@@ -15,13 +16,15 @@ class Fish extends Unit {
     act() {
         switch (this.think()) {
             case 'MOVE':
-                this.move();
+                this.velocity = this.velocityValue;
                 break;
             case 'ROTATE':
-                this.rotate(10);
+                this.rotationAngle = this.rotationValue;
                 break;
             case 'INV_ROTATE':
-                this.rotate(-10);
+                this.rotationAngle = -this.rotationValue;
+                break;
+            case 'WAIT':
                 break;
         }
     }

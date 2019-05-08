@@ -4,10 +4,8 @@ class Entity extends Vector {
         super(x, y);
         this.id = entityId++;
         this.graphics = graphics;
-        this.type = graphics.type;
         this.graphics.x = x;
         this.graphics.y = y;
-        this.rotation = 0;
         this.radius = 10;
     }
     
@@ -24,9 +22,9 @@ class EntityFactory {
 
     createUnit(type, x, y) {
       if (type === 'FISH') {
-        return new Fish(x, y, getFishGraphics());
+        return new Fish(x, y, getRoundSpriteTexture(FISH_TEXTURE, FISH_RADIUS));
       } else if (type === 'FRUIT') {
-        return new Fruit(x, y, getFruitGraphics());
+        return new Fruit(x, y, getRoundSpriteTexture(FRUIT_TEXTURE, FRUIT_RADIUS));
       }
       return null;
     }

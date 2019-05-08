@@ -8,23 +8,26 @@ function setup() {
 
   generateWorld();
  
-  app.ticker.add(delta => gameLoop(delta));
 }
-
-document.getElementById('canvasZone').appendChild(app.view);
 
 setup();
 
-function gameLoop(delta){
+const animate = function () {
+  update();
+  requestAnimationFrame(animate);
+  render();
+};
+
+function update() {
+  for (var i = units.length - 1; i >= 0; i--) {
+    if (units[i].health <= 0) {
+      unitLayer.removeChild(units[index].graphics);
+      units.splice(index, 1);
+    } else {
+      update_unit(units[i]);
+    }
+  }
 }
 
-setInterval(() => { 
-  play();
-}, TIME_FRAME_MS);
-
-function play() {
-  update_units();
-  play_events();
-  events.length = 0;
-}
+animate();
 

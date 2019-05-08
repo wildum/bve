@@ -1,26 +1,35 @@
-let Application = PIXI.Application,
-    Container = PIXI.Container,
-    loader = PIXI.loader,
-    resources = PIXI.loader.resources,
-    TextureCache = PIXI.utils.TextureCache,
-    Sprite = PIXI.Sprite,
-    Rectangle = PIXI.Rectangle;
+const Application = PIXI.Application,
+  Container = PIXI.Container,
+  loader = PIXI.loader,
+  resources = PIXI.loader.resources,
+  TextureCache = PIXI.utils.TextureCache,
+  Sprite = PIXI.Sprite,
+  Rectangle = PIXI.Rectangle;
 
-let app = new Application({ 
-    width: SCREEN_WIDTH, 
-    height: SCREEN_HEIGHT,
-    transparent: false, 
-    resolution: 1,
-    backgroundColor: 0xFFFFFF
-  }
-);
+const stage = new Container();
+const renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.view);
+const r = new PIXI.Graphics(); r.beginFill(0xFFFFFF); r.drawRect(0, 0, window.innerWidth, window.innerHeight); r.endFill();
+stage.addChild(r);
 
-const gameLayer = new PIXI.Container();
+$(window).resize(resize);
 
-const unitLayer = new PIXI.Container();
-const fruitLayer = new PIXI.Container();
+const gameLayer = new Container();
+
+const unitLayer = new Container();
+const fruitLayer = new Container();
 
 gameLayer.addChild(unitLayer);
 gameLayer.addChild(fruitLayer);
 
-app.stage.addChild(gameLayer);
+stage.addChild(gameLayer);
+
+const render = function () {
+  renderer.render(stage);
+};
+
+function resize() {
+  screenWidth = $(window).width();
+  screenHeight = $(window).height();
+  renderer.resize(screenWidth, screenHeight);
+}
