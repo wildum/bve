@@ -20,13 +20,13 @@ class Entity extends Vector {
 
 class EntityFactory {
 
-    createUnit(type, x, y) {
-      if (type === 'FISH') {
-        return new Fish(x, y, getRoundSpriteTexture(FISH_TEXTURE, FISH_RADIUS));
-      } else if (type === 'FRUIT') {
-        return new Fruit(x, y, getRoundSpriteTexture(FRUIT_TEXTURE, FRUIT_RADIUS));
-      }
-      return null;
+  createUnit(type, x, y) {
+    if (type === 'FISH') {
+      return new Fish(x, y, getRoundSpriteTexture(FISH_TEXTURE, FISH_RADIUS, unitLayer));
+    } else if (type === 'FRUIT') {
+      return new Fruit(x, y, getRoundSpriteTexture(FRUIT_TEXTURE, FRUIT_RADIUS, fruitLayer));
     }
-  
+    return null;
   }
+
+}

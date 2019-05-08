@@ -22,12 +22,3 @@ function update_unit(unit) {
   unit.rotationAngle = 0;
   checkWindowLimits(unit);
 }
-
-function check_units_collisions(entity, x, y) {
-  for (var i = 0; i < units.length; i++) {
-    if (entity.id != units[i].id && squareDist(x, y, units[i].x, units[i].y) < Math.pow(entity.radius + units[i].radius, 2)) {
-      return true;
-    }
-  }
-  return false;
-}
