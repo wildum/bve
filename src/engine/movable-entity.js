@@ -15,8 +15,9 @@ class MovableEntity extends Entity {
     }
 
     move() {
-        const nx = this.x + this.velocity * Math.cos(this.rotation);
-        const ny = this.y + this.velocity * Math.sin(this.rotation);
+        let nx = this.x + this.velocity * Math.cos(this.rotation);
+        let ny = this.y + this.velocity * Math.sin(this.rotation);
+        ({nx, ny} = checkWindowLimits(nx, ny));
         if (!check_collisions(this, nx, ny)) {
             this.x = nx;
             this.y = ny;
@@ -42,4 +43,19 @@ function check_collisions(entity, x, y) {
         }
     }
     return false;
+}
+
+
+function checkWindowLimits(nx, ny) {
+    if (nx < 0) {
+        nx += screenWidth;
+    } else if (nx > screenWidth) {
+        nx -= screenWidth;
+    }
+    if (ny < 0) {
+        ny += screenHeight;
+    } else if (ny > screenHeight) {
+        ny -= screenHeight;
+    }
+    return {nx, ny};
 }

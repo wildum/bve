@@ -20,5 +20,4 @@ function update_unit(unit) {
   unit.move();
   unit.velocity *= 0.98;
   unit.rotationAngle = 0;
-  checkWindowLimits(unit);
 }
