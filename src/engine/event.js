@@ -25,6 +25,22 @@ class EventMovement extends Event {
 
 }
 
+class EventRotate extends Event {
+    constructor(entity, t, angle) {
+        super(entity, t);
+        this.angle = angle;
+    }
+    play() {
+        let rotation = this.entity.rotation + this.angle;
+        if (rotation >= 360) {
+            rotation -= 360;
+        } else if (rotation < 0) {
+            rotation += 360;
+        }
+        this.entity.rotation = rotation;
+    }
+}
+
 function checkWindowLimits(entity) {
     if (entity.x < 0) {
         entity.x += SCREEN_WIDTH;

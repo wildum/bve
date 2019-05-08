@@ -1,4 +1,4 @@
-const UNIT_NUMBER = 50;
+const UNIT_NUMBER = 1;
 const FRUIT_NUMBER = 30;
 const minX = 50;
 const minY = 50;

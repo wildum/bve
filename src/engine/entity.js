@@ -4,6 +4,7 @@ class Entity extends Vector {
         super(x, y);
         this.id = entityId++;
         this.graphics = graphics;
+        this.type = graphics.type;
         this.graphics.x = x;
         this.graphics.y = y;
         this.rotation = 0;

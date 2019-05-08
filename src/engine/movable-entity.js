@@ -7,7 +7,14 @@ class MovableEntity extends Entity {
     }
 
     rotate(value) {
-        this.rotation += value;
+        let inc = 1;
+        if (value < 0) {
+            inc *= -1;
+            value *= -1;
+        }
+        for (let i = 1; i <= value; i++) {
+            events.push(new EventRotate(this, i/value, inc));
+        }
     }
 
     move() {

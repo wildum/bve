@@ -6,8 +6,6 @@ function setup() {
   events = [];
   fruits = [];
 
-  state = play;
-
   generateWorld();
  
   app.ticker.add(delta => gameLoop(delta));
@@ -18,10 +16,13 @@ document.getElementById('canvasZone').appendChild(app.view);
 setup();
 
 function gameLoop(delta){
-  state(delta);
 }
 
-function play(delta) {
+setInterval(() => { 
+  play();
+}, TIME_FRAME_MS);
+
+function play() {
   update_units();
   play_events();
   events.length = 0;
