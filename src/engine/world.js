@@ -15,6 +15,10 @@ function generateWorld() {
     }
 }
 
+setInterval(() => {
+    fruits.push(generateAtRandomPositions('FRUIT'));
+}, 5000);
+
 function generateAtRandomPositions(type) {
     return entityFactory.createUnit(type, getRandomInt(minX, maxX), getRandomInt(minY, maxY));
 }
