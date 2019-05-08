@@ -12,6 +12,9 @@ class MovableEntity extends Entity {
 
     rotate() {
         this.rotation += this.rotationAngle * Math.PI / 180;
+        if (this.vision) {
+            this.vision.rotation = this.rotation;
+        }
     }
 
     move() {
@@ -19,6 +22,10 @@ class MovableEntity extends Entity {
         let ny = this.y + this.velocity * Math.sin(this.rotation);
         ({nx, ny} = checkWindowLimits(nx, ny));
         if (!check_collisions(this, nx, ny)) {
+            if (this.vision) {
+                this.vision.x = nx +  (FISH_RADIUS + 10) * Math.cos(this.rotation);
+                this.vision.y = ny + (FISH_RADIUS + 10) * Math.sin(this.rotation);
+            }
             this.x = nx;
             this.y = ny;
         }
