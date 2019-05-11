@@ -23,11 +23,14 @@ class MovableEntity extends Entity {
         ({nx, ny} = checkWindowLimits(nx, ny));
         if (!check_collisions(this, nx, ny)) {
             if (this.vision) {
-                this.vision.x = nx +  (FISH_RADIUS + 10) * Math.cos(this.rotation);
-                this.vision.y = ny + (FISH_RADIUS + 10) * Math.sin(this.rotation);
+                this.vision.x = nx +  (FISH_RADIUS + 40) * Math.cos(this.rotation);
+                this.vision.y = ny + (FISH_RADIUS + 40) * Math.sin(this.rotation);
             }
             this.x = nx;
             this.y = ny;
+        } else {
+            this.vision.x = this.x +  (FISH_RADIUS + 40) * Math.cos(this.rotation);
+            this.vision.y = this.y + (FISH_RADIUS + 40) * Math.sin(this.rotation);
         }
     }
 
