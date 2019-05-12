@@ -18,19 +18,25 @@ class MovableEntity extends Entity {
     }
 
     move() {
-        let nx = this.x + this.velocity * Math.cos(this.rotation);
-        let ny = this.y + this.velocity * Math.sin(this.rotation);
+        const cos = Math.cos(this.rotation);
+        const sin = Math.sin(this.rotation);
+        let nx = this.x + this.velocity * cos;
+        let ny = this.y + this.velocity * sin;
+        const v_cos = (FISH_RADIUS + 50) * cos;
+        const v_sin = (FISH_RADIUS + 50) * sin;
         ({nx, ny} = checkWindowLimits(nx, ny));
         if (!check_collisions(this, nx, ny)) {
-            if (this.vision) {
-                this.vision.x = nx +  (FISH_RADIUS + 40) * Math.cos(this.rotation);
-                this.vision.y = ny + (FISH_RADIUS + 40) * Math.sin(this.rotation);
-            }
             this.x = nx;
             this.y = ny;
-        } else {
-            this.vision.x = this.x +  (FISH_RADIUS + 40) * Math.cos(this.rotation);
-            this.vision.y = this.y + (FISH_RADIUS + 40) * Math.sin(this.rotation);
+        }
+        this.vision.x = this.x + v_cos;
+        this.vision.y = this.y + v_sin;
+        for (let i = 0; i < this.visionCalc.length; i++) {
+            const mod = (i%10)*10;
+            const div = Math.floor(i/10)*10;
+            this.visionCalc[i].x = this.x + FISH_RADIUS * cos - 40 * sin + mod * cos + div * sin;
+            this.visionCalc[i].y = this.y - FISH_RADIUS * sin - 40 * cos - mod * sin + div * cos;
+            this.visionCalc[i].rotation = this.rotation;
         }
     }
 

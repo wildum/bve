@@ -4,6 +4,13 @@ const FRUIT_RADIUS = 5;
 const FRUIT_TEXTURE = PIXI.Texture.from('assets/fruit.png');
 const FISH_TEXTURE = PIXI.Texture.from('assets/fish_blue.png');
 
+const squareGraphic = new PIXI.Graphics();
+squareGraphic.beginFill(0xFFFFFF);
+squareGraphic.lineStyle(1, 0x000000);
+squareGraphic.drawRect(0, 0, 10, 10);
+squareGraphic.endFill();
+const squareTexture = squareGraphic.generateCanvasTexture();
+
 function getRoundSpriteTexture(texture, radius, layer) {
     const sprite = new PIXI.Sprite(texture);
     sprite.scale.set(radius*2/100);
