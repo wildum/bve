@@ -4,6 +4,7 @@ class Fish extends Unit {
         super(x, y, graphics);
         this.biteRange = 15;
         this.radius = FISH_RADIUS;
+        this.maxHealth = UNIT_DEFAULT_HEALTH;
         this.rotationValue = 15;
         this.velocityValue = 5;
         this.rotationAngle = 0;

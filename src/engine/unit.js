@@ -8,10 +8,10 @@ class Unit extends MovableEntity {
     this.visionCalc = [];
     this.vision = new PIXI.Container();
     for (let i = 0; i < 80; i++) {
-      let sp = new PIXI.Sprite(squareTexture);
-      sp.x = (i%10)*10;
-      sp.y = Math.floor(i/10)*10;
-      this.vision.addChild(sp);
+      // let sp = new PIXI.Sprite(squareTexture);
+      // sp.x = (i%10)*10;
+      // sp.y = Math.floor(i/10)*10;
+      // this.vision.addChild(sp);
       let vc = new Rectangle(0, 0, 10, 10);
       vc.A.x = this.x + (i%10)*10 + FISH_RADIUS;
       vc.A.y = this.y + Math.floor(i/10)*10 - 40;
@@ -38,7 +38,7 @@ class Unit extends MovableEntity {
               nbOfUnits++;
             }
         }
-        this.vision.children[i].tint = nbOfUnits > 0 ? 0x0000FF : nbOfFruits > 0 ? 0xFF00FF : 0xFFFFFF;
+        //this.vision.children[i].tint = nbOfUnits > 0 ? 0x0000FF : nbOfFruits > 0 ? 0xFF00FF : 0xFFFFFF;
       }
   }
 
@@ -48,6 +48,7 @@ class Unit extends MovableEntity {
 setInterval(() => {
   units.forEach(unit => {
     unit.act();
+    decay_health(unit);
   });
 }, 100);
 
@@ -57,4 +58,9 @@ function update_unit(unit) {
   unit.velocity *= 0.98;
   unit.rotationAngle = 0;
   unit.updateVision();
+}
+
+function decay_health(unit) {
+  unit.health -= 0.5;
+  unit.graphics.alpha = unit.health / unit.maxHealth;
 }
