@@ -34,9 +34,9 @@ class MovableEntity extends Entity {
         for (let i = 0; i < this.visionCalc.length; i++) {
             const mod = (i%10)*10;
             const div = Math.floor(i/10)*10;
-            this.visionCalc[i].x = this.x + FISH_RADIUS * cos - 40 * sin + mod * cos + div * sin;
-            this.visionCalc[i].y = this.y - FISH_RADIUS * sin - 40 * cos - mod * sin + div * cos;
-            this.visionCalc[i].rotation = this.rotation;
+            this.visionCalc[i].A.x = this.x + FISH_RADIUS * cos + 40 * sin + mod * cos - div * sin;
+            this.visionCalc[i].A.y = this.y + FISH_RADIUS * sin - 40 * cos + mod * sin + div * cos;
+            this.visionCalc[i].rotateAroundA(this.rotation);
         }
     }
 

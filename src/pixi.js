@@ -3,8 +3,7 @@ const Application = PIXI.Application,
   loader = PIXI.loader,
   resources = PIXI.loader.resources,
   TextureCache = PIXI.utils.TextureCache,
-  Sprite = PIXI.Sprite,
-  Rectangle = PIXI.Rectangle;
+  Sprite = PIXI.Sprite;
 
 const stage = new Container();
 const renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);

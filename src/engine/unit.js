@@ -12,9 +12,9 @@ class Unit extends MovableEntity {
       sp.x = (i%10)*10;
       sp.y = Math.floor(i/10)*10;
       this.vision.addChild(sp);
-      let vc = new PIXI.Rectangle(0, 0, 10, 10);
-      vc.x = this.x + (i%10)*10 + FISH_RADIUS;
-      vc.y = this.y + Math.floor(i/10)*10 - 40;
+      let vc = new Rectangle(0, 0, 10, 10);
+      vc.A.x = this.x + (i%10)*10 + FISH_RADIUS;
+      vc.A.y = this.y + Math.floor(i/10)*10 - 40;
       this.visionCalc.push(vc);
     }
     this.vision.x = this.x + FISH_RADIUS + 50;
@@ -26,16 +26,19 @@ class Unit extends MovableEntity {
 
   updateVision() {
       for (let i = 0; i < this.visionCalc.length; i++) {
-          for (let f of fruits) {
-              if (this.visionCalc[i].contains(f.x, f.y)) {
-                this.vision.children[i].tint = 0xFF00FF;
-              }
-          }
-          for (let u of units) {
-              if (this.visionCalc[i].contains(u.x, u.y)) {
-                this.vision.children[i].tint = 0x0000FF;
-              }
-          }
+        let nbOfFruits = 0;
+        let nbOfUnits = 0;
+        for (let f of fruits) {
+            if (this.visionCalc[i].contains(f)) {
+              nbOfFruits++;
+            }
+        }
+        for (let u of units) {
+            if (this.visionCalc[i].contains(u)) {
+              nbOfUnits++;
+            }
+        }
+        this.vision.children[i].tint = nbOfUnits > 0 ? 0x0000FF : nbOfFruits > 0 ? 0xFF00FF : 0xFFFFFF;
       }
   }
 

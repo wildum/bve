@@ -6,6 +6,7 @@ class Fish extends Unit {
         this.radius = FISH_RADIUS;
         this.rotationValue = 15;
         this.velocityValue = 5;
+        this.rotationAngle = 0;
     }
 
     think() {
@@ -19,10 +20,10 @@ class Fish extends Unit {
                 this.velocity = this.velocityValue;
                 break;
             case 'ROTATE':
-                //this.rotationAngle = this.rotationValue;
+                this.rotationAngle = this.rotationValue;
                 break;
             case 'INV_ROTATE':
-                //this.rotationAngle = -this.rotationValue;
+                this.rotationAngle = -this.rotationValue;
                 break;
             case 'WAIT':
                 break;

@@ -1,4 +1,4 @@
-const FISH_NUMBER = 1;
+const FISH_NUMBER = 5;
 const FRUIT_NUMBER = 30;
 const minX = 50;
 const minY = 50;
