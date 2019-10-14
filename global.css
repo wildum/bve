@@ -2,3 +2,8 @@ body {
   margin: 0;
   padding: 0;
 }
+
+#time {
+  position: absolute;
+  font-size: 40px;
+}

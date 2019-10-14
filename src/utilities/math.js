@@ -98,10 +98,44 @@ function squareDist(x1, y1, x2, y2) {
     return Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2);
 }
 
+const SEED = xmur3(SEED_STR);
+const RAND = xoshiro128ss(SEED(), SEED(), SEED(), SEED());
+
+function xoshiro128ss(a, b, c, d) {
+    return function() {
+        var t = b << 9, r = a * 5; r = (r << 7 | r >>> 25) * 9;
+        c ^= a; d ^= b;
+        b ^= c; a ^= d; c ^= t;
+        d = d << 11 | d >>> 21;
+        return (r >>> 0) / 4294967296;
+    }
+}
+
+function xmur3(str) {
+    for(var i = 0, h = 1779033703 ^ str.length; i < str.length; i++)
+        h = Math.imul(h ^ str.charCodeAt(i), 3432918353),
+        h = h << 13 | h >>> 19;
+    return function() {
+        h = Math.imul(h ^ h >>> 16, 2246822507);
+        h = Math.imul(h ^ h >>> 13, 3266489909);
+        return (h ^= h >>> 16) >>> 0;
+    }
+}
+
+function xoshiro128ss(a, b, c, d) {
+    return function() {
+        var t = b << 9, r = a * 5; r = (r << 7 | r >>> 25) * 9;
+        c ^= a; d ^= b;
+        b ^= c; a ^= d; c ^= t;
+        d = d << 11 | d >>> 21;
+        return (r >>> 0) / 4294967296;
+    }
+}
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(RAND() * (max - min + 1)) + min;
 }
 
 function buildVectorFromVectors(u, v) {

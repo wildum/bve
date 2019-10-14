@@ -44,14 +44,6 @@ class Unit extends MovableEntity {
 
 }
 
-
-setInterval(() => {
-  units.forEach(unit => {
-    unit.act();
-    decay_health(unit);
-  });
-}, 100);
-
 function update_unit(unit) {
   unit.rotate();
   unit.move();
@@ -61,6 +53,6 @@ function update_unit(unit) {
 }
 
 function decay_health(unit) {
-  unit.health -= 0.5;
+  unit.health -= UNIT_DEFAULT_HEALTH_DECAY;
   unit.graphics.alpha = unit.health / unit.maxHealth;
 }

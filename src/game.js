@@ -16,6 +16,7 @@ const animate = function () {
   update();
   requestAnimationFrame(animate);
   render();
+  checkEndGame();
 };
 
 function update() {
@@ -26,6 +27,12 @@ function update() {
     } else {
       update_unit(units[i]);
     }
+  }
+}
+
+function checkEndGame() {
+  if (units.length === 0) {
+    clearIntervals();
   }
 }
 

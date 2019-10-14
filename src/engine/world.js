@@ -1,5 +1,5 @@
-const FISH_NUMBER = 5;
-const FRUIT_NUMBER = 30;
+const FISH_NUMBER = 30;
+const FRUIT_NUMBER = 50;
 const minX = 50;
 const minY = 50;
 const maxX = screenWidth - 50;
@@ -14,10 +14,6 @@ function generateWorld() {
         units.push(generateAtRandomPositions('FISH'));
     }
 }
-
-setInterval(() => {
-    fruits.push(generateAtRandomPositions('FRUIT'));
-}, 1000);
 
 function generateAtRandomPositions(type) {
     return entityFactory.createUnit(type, getRandomInt(minX, maxX), getRandomInt(minY, maxY));

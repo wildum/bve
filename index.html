@@ -7,13 +7,14 @@
     <title>BVE</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.4/pixi.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
     <link rel="stylesheet" type="text/css" href="global.css">
     <link rel="icon" href="favicon.ico" />
 </head>
 
 <body>
     <div id="canvasZone">
-
+        <div id="time"></div>
     </div>
 
     <script src="src/utilities/constants.js"></script>
@@ -28,6 +29,8 @@
     <script src="src/engine/fish.js"></script>
     <script src="src/engine/fruit.js"></script>
     <script src="src/engine/world.js"></script>
+
+    <script src="src/utilities/intervals.js"></script>
 
     <script src="src/pixi.js"></script>
     <script src="src/game.js"></script>
