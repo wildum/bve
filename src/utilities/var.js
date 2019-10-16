@@ -6,3 +6,4 @@ let events;
 let screenWidth  = $(window).width();
 let screenHeight = $(window).height();
 let time = 0;
+let gameOn = true;

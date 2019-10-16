@@ -31,8 +31,10 @@ function update() {
 }
 
 function checkEndGame() {
-  if (units.length === 0) {
+  if (units.length === 0 && gameOn) {
     clearIntervals();
+    gameOn = false;
+    console.log("end");
   }
 }
 

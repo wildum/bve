@@ -7,7 +7,7 @@ const FISH_TEXTURE = PIXI.Texture.from('assets/fish_blue.png');
 const squareGraphic = new PIXI.Graphics();
 squareGraphic.beginFill(0xFFFFFF);
 squareGraphic.lineStyle(1, 0x000000);
-squareGraphic.drawRect(0, 0, 10, 10);
+squareGraphic.drawRect(0, 0, UNIT_DEFAULT_VISION_SQUARE_LENGTH, UNIT_DEFAULT_VISION_SQUARE_LENGTH);
 squareGraphic.endFill();
 const squareTexture = squareGraphic.generateCanvasTexture();
 
