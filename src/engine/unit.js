@@ -8,10 +8,10 @@ class Unit extends MovableEntity {
     this.visionCalc = [];
     this.vision = new PIXI.Container();
     for (let i = 0; i < 80; i++) {
-      // let sp = new PIXI.Sprite(squareTexture);
-      // sp.x = (i%10)*10;
-      // sp.y = Math.floor(i/10)*10;
-      // this.vision.addChild(sp);
+      let sp = new PIXI.Sprite(squareTexture);
+      sp.x = (i%10)*10;
+      sp.y = Math.floor(i/10)*10;
+      this.vision.addChild(sp);
       let vc = new Rectangle(0, 0, 10, 10);
       vc.A.x = this.x + (i%10)*10 + FISH_RADIUS;
       vc.A.y = this.y + Math.floor(i/10)*10 - 40;
@@ -38,7 +38,7 @@ class Unit extends MovableEntity {
               nbOfUnits++;
             }
         }
-        //this.vision.children[i].tint = nbOfUnits > 0 ? 0x0000FF : nbOfFruits > 0 ? 0xFF00FF : 0xFFFFFF;
+        this.vision.children[i].tint = nbOfUnits > 0 ? 0x0000FF : nbOfFruits > 0 ? 0xFF00FF : 0xFFFFFF;
       }
   }
 

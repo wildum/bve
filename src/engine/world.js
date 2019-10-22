@@ -1,5 +1,5 @@
-const FISH_NUMBER = 30;
-const FRUIT_NUMBER = 50;
+const FISH_NUMBER = 5;
+const FRUIT_NUMBER = 100;
 const minX = 50;
 const minY = 50;
 const maxX = screenWidth - 50;
